@@ -22,7 +22,6 @@
 
     'use strict';
     const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-    //const PAGE_ACCESS_TOKEN = "EAACl4IDNDgkBAOMPlXoQWCpcmcspdbk5a0XsTUQ46nhj81UOhmrZCNJmbbunxuHzFoZCym8a157ogrT9LZBXGdFOitwmrPyzu9Q2cwRcpWwqpXsUXENFZBwh8gxELxa9PeaJfEK3AJoGNlZCCLaQSd34mL5ZBnwzYzyx2Tl4RpRAZDZD"
     // Imports dependencies and set up http server
     const
         request = require('request'),
