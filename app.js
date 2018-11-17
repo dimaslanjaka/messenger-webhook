@@ -1,4 +1,3 @@
-
 /**
  * Copyright 2017-present, Facebook, Inc. All rights reserved.
  *
@@ -21,7 +20,8 @@
  */
 
 'use strict';
-const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+//const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const PAGE_ACCESS_TOKEN = "EAACl4IDNDgkBAOMPlXoQWCpcmcspdbk5a0XsTUQ46nhj81UOhmrZCNJmbbunxuHzFoZCym8a157ogrT9LZBXGdFOitwmrPyzu9Q2cwRcpWwqpXsUXENFZBwh8gxELxa9PeaJfEK3AJoGNlZCCLaQSd34mL5ZBnwzYzyx2Tl4RpRAZDZD"
 // Imports dependencies and set up http server
 const 
   request = require('request'),
@@ -76,7 +76,7 @@ app.post('/webhook', (req, res) => {
 app.get('/webhook', (req, res) => {
   
   /** UPDATE YOUR VERIFY TOKEN **/
-  const VERIFY_TOKEN = "EAACl4IDNDgkBAC40KudM3ZCX5wx5N7kUZC6fPULq4mEV2DcD2UgJl1fF5MyAEp2SsOfopklnIhMrwuPywmrJijRuLLB03hqGtnHZBnl83FIKLePpIhTmKGmPV4T33omh1FUDApA5Auf5ryQF8GmNSQpHSYIA9Ud8PlAzeEWMgZDZD";
+  const VERIFY_TOKEN = "EAACl4IDNDgkBAOMPlXoQWCpcmcspdbk5a0XsTUQ46nhj81UOhmrZCNJmbbunxuHzFoZCym8a157ogrT9LZBXGdFOitwmrPyzu9Q2cwRcpWwqpXsUXENFZBwh8gxELxa9PeaJfEK3AJoGNlZCCLaQSd34mL5ZBnwzYzyx2Tl4RpRAZDZD"
   
   // Parse params from the webhook verification request
   let mode = req.query['hub.mode'];
@@ -155,6 +155,8 @@ function handlePostback(sender_psid, received_postback) {
     response = { "text": "Thanks!" }
   } else if (payload === 'no') {
     response = { "text": "Oops, try sending another image." }
+  } else if (payload === "number"){
+    response = { "text": "My Number Phone 085655667573 (Whatsapp available)." }
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
@@ -171,14 +173,14 @@ function callSendAPI(sender_psid, response) {
 
   // Send the HTTP request to the Messenger Platform
   request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "uri": "https://graph.facebook.com/v3.2/me/messages",
     "qs": { "access_token": PAGE_ACCESS_TOKEN },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
       console.log('message sent!')
-    } else {
+    } else if (err){
       console.error("Unable to send message:" + err);
     }
   }); 
