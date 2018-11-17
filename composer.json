@@ -1,6 +1,0 @@
-{
-    "require": {
-        "php-curl-class/php-curl-class": "^8.3",
-        "facebook/graph-sdk": "^5.6"
-    }
-}
