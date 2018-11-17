@@ -26,6 +26,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const 
   request = require('request'),
   express = require('express'),
+  http = require('http'),
   body_parser = require('body-parser'),
   app = express().use(body_parser.json()); // creates express http server
 
@@ -158,7 +159,9 @@ function handlePostback(sender_psid, received_postback) {
     response = { "text": "My Number Phone 085655667573 (Whatsapp available)." }
   } else if (payload === 'GET_STARTED'){
     
-  } 
+  } else if (payload.indexOf("available to chat") >-1){
+    response = "Of course, may i help you. lets talking!"
+  }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
 }
