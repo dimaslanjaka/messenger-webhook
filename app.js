@@ -54,11 +54,10 @@ app.post('/webhook', (req, res) => {
 
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
-      if (webhook_event.message) {
+    if (webhook_event.message) {
         handleMessage(sender_psid, webhook_event.message);        
-      } else if (webhook_event.postback) {
-        
-        handlePostback(sender_psid, webhook_event.postback);
+    } else if (webhook_event.postback) {       
+      handlePostback(sender_psid, webhook_event.postback);
       }
       
     });
@@ -157,7 +156,9 @@ function handlePostback(sender_psid, received_postback) {
     response = { "text": "Oops, try sending another image." }
   } else if (payload === "number"){
     response = { "text": "My Number Phone 085655667573 (Whatsapp available)." }
-  }
+  } else if (payload === 'GET_STARTED'){
+    
+  } 
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
 }
