@@ -102,11 +102,13 @@
     function handleMessage(sender_psid, received_message) {
         let response;
         console.log(received_message);
-        // Checks if the message contains text
+        
         if (received_message.text) {
-          message_text=received_message.text
-          if (message_text.toLowerCase() == 'hi'){
-            response = { "text": `Hi , Can I Help You ?` }
+          var mtext = received_message.text
+          if (mtext.toLowerCase().indexOf('hi') > -1){
+            response = {
+              "text": `Hi , Can I Help You ?`
+            }
           } else {
             response = {
                 "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
