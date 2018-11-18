@@ -1,8 +1,0 @@
-{
-    "require": {
-        "php-curl-class/php-curl-class": "^8.3",
-        "facebook/graph-sdk": "^5.6",
-        "guzzlehttp/guzzle": "^6.3",
-        "pimax/fb-messenger-php": "dev-master"
-    }
-}
